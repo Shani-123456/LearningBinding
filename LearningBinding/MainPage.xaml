@@ -1,104 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="LearningBinding.MainPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LearningBinding.MainPage">
 
-    <ScrollView>
+    <VerticalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
 
-        <VerticalStackLayout Margin="15">
-            <!--  הטקסט והתמונה  -->
-            <VerticalStackLayout
-                Margin="15,50"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
+        <Image Source="{Binding DisplayedStudent.ImageName}" WidthRequest="150" HeightRequest="150" />
 
+        <Label Text="{Binding DisplayedStudent.FirstName}" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="{Binding DisplayedStudent.LastName}" FontSize="24" HorizontalOptions="Center" />
 
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="קשה יש רק בלחם"
-                    VerticalOptions="Center" />
+        <DatePicker Date="{Binding DisplayedStudent.BirthDate, Mode=TwoWay}" HorizontalOptions="Center" /> 
+        
+        <Button Text=" תלחץ כדי לשנות את הסטודנט:)" Clicked="OnChangeStudentClicked" HorizontalOptions="Center" />
 
-                <Image
-                    x:Name="botImg"
-                    Aspect="AspectFit"
-                    HeightRequest="150"
-                    Source="dotnet_bot.png"
-                    WidthRequest="150" />
+    </VerticalStackLayout>
 
-
-            </VerticalStackLayout>
-            <!--  Grid 3*2 first column is name second is the slider  -->
-            <Grid ColumnDefinitions="*,4*" RowDefinitions="*,*,*">
-                <!--  Scale Slider  -->
-                <Label
-                    FontSize="20"
-                    HorizontalTextAlignment="Center"
-                    Text="הגדלה" />
-                <Slider
-                    x:Name="scaleSlider"
-                    Grid.Column="1"
-                    Maximum="5"
-                    MaximumTrackColor="#F01616"
-                    Minimum="0"
-                    MinimumTrackColor="#78EE10"
-                    Value="0" />
-                <Label
-                    Grid.Column="1"
-                    Margin="0,15,0,0"
-                    Padding="10"
-                    HorizontalTextAlignment="Center" />
-
-
-                <!--  Rotation Slider  -->
-                <Label
-                    Grid.Row="1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Center"
-                    Text="סיבוב" />
-                <Slider
-                    x:Name="rotationSlider"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Maximum="360"
-                    Minimum="0"
-                    ThumbColor="Red"
-                    ThumbImageSource="slider.png"
-                    Value="1" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="0,15,0,0"
-                    Padding="10"
-                    HorizontalTextAlignment="Center" />
-
-                <!--  Opacity Slider  -->
-                <Label
-                    Grid.Row="2"
-                    FontSize="20"
-                    HorizontalTextAlignment="Center"
-                    Text="שקיפות" />
-                <Slider
-                    x:Name="opacitySlider"
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Maximum="1"
-                    Minimum="0"
-                    Value="1" />
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Margin="0,15,0,0"
-                    Padding="10"
-                    HorizontalTextAlignment="Center" />
-
-            </Grid>
-
-            <Button
-                Clicked="OpacityChangeOnClick"
-                Text="שנה שקיפות"
-                WidthRequest="150" />
-        </VerticalStackLayout>
-    </ScrollView>
 </ContentPage>
